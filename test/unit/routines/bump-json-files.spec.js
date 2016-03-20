@@ -20,8 +20,7 @@ describe("bump-json-files", function() {
       expect(targetFile).to.have.property("version", "0.1.0");
       removeFileFixtureSync();
       done();
-    })
-    .catch(function(err) {
+    }).catch(function(err) {
       removeFileFixtureSync();
       done(err);
     });
