@@ -4,15 +4,7 @@ const Promise = require("bluebird");
 const loadJSON = Promise.promisify(require("json-update").load);
 
 const bumpJSONFiles = require(root + "/src/routines/bump-json-files");
-
-const write = require("write");
-const del = require("delete");
-const createFileFixtureSync = function(fileName, contents) {
-  write.sync(fileName, contents);
-  return function removeFileFixtureSync() {
-    del.sync(fileName);
-  };
-};
+const createFileFixtureSync = require(root + "/test/create-file-fixture-sync");
 
 describe("bump-json-files", function() {
 
