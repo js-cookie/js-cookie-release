@@ -1,4 +1,5 @@
-const bumpVersion = require("../../src/utilities/bump-version");
+const root = require("app-root-path");
+const bumpVersion = require(root + "/src/utilities/bump-version");
 const expect = require("expect.js");
 
 describe("bump-version", function() {
