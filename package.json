@@ -15,6 +15,12 @@
   "devDependencies": {
     "eslint": "2.4.0",
     "expect.js": "^0.3.1",
-    "mocha": "2.4.5"
+    "mocha": "2.4.5",
+    "mock-fs": "3.8.0"
+  },
+  "dependencies": {
+    "app-root-path": "^1.0.0",
+    "bluebird": "3.3.4",
+    "json-update": "1.2.0"
   }
 }
