@@ -8,5 +8,11 @@
     "node"
   ],
   "author": "Fagner Brack",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src/**"
+  },
+  "devDependencies": {
+    "eslint": "2.4.0"
+  }
 }
