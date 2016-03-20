@@ -1,0 +1,12 @@
+{
+  "name": "js-cookie-build",
+  "version": "0.0.0",
+  "description": "Build routines for JavaScript Cookie library",
+  "keywords": [
+    "js-cookie",
+    "build",
+    "node"
+  ],
+  "author": "Fagner Brack",
+  "license": "MIT"
+}
