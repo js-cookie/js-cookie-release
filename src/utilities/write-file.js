@@ -1,6 +1,13 @@
 const promisify = require("bluebird").promisify;
-const writeFile = promisify(require("fs").writeFile);
+const fs = require("fs");
+const writeFile = promisify(fs.writeFile);
 
-module.exports = function(fileName, fileContent) {
+const writeOperation = function(fileName, fileContent) {
   return writeFile(fileName, fileContent);
 };
+
+writeOperation.sync = function(fileName, fileContent) {
+  fs.writeFile(fileName, fileContent);
+};
+
+module.exports = writeOperation;
