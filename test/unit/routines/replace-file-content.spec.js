@@ -15,7 +15,7 @@ describe("replace-file-content", function() {
       return replace("file").from(fileContent).with("box");
     };
     return replaceFileContent(targetFileName, replacementOperation).then(function() {
-      return readFile(targetFileName, "utf-8");
+      return readFile(targetFileName);
     }).then(function(fileContent) {
       expect(fileContent).to.be("Some box content");
     }).finally(function() {

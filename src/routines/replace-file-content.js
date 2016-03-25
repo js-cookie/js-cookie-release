@@ -4,7 +4,7 @@ const readFile = require(root + "/src/utilities/read-file");
 const writeFile = require(root + "/src/utilities/write-file");
 
 module.exports = function(fileName, replace) {
-  return readFile(fileName, "utf-8").then(function(fileContent) {
+  return readFile(fileName).then(function(fileContent) {
     const replacedContent = replace(fileContent);
     return writeFile(fileName, replacedContent);
   });

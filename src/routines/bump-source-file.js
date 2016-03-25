@@ -5,7 +5,7 @@ const writeFile = require(root + "/src/utilities/write-file");
 const bumpVersion = require(root + "/src/utilities/bump-version");
 
 module.exports = function(bumpSpec, fileName, findVersion) {
-  return readFile(fileName, "utf-8").then(function(fileContent) {
+  return readFile(fileName).then(function(fileContent) {
     const versionLocator = findVersion(fileContent);
     const version = fileContent.substring(versionLocator.startIndex, versionLocator.endIndex);
     const bumpedVersion = bumpVersion(version, bumpSpec);

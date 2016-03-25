@@ -21,7 +21,7 @@ describe("bump-source-file", function() {
       };
     };
     return bumpSourceFile("minor", targetFilename, findVersion).then(function() {
-      return readFile(targetFilename, "utf-8");
+      return readFile(targetFilename);
     }).then(function(changedFileContents) {
       expect(changedFileContents).to.be("/* JS Cookie v0.1.0 */");
     }).finally(function() {
