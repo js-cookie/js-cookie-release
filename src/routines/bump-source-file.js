@@ -1,9 +1,7 @@
 const root = require("app-root-path");
-const promisify = require("bluebird").promisify;
-
-const writeFile = promisify(require("fs").writeFile);
 
 const readFile = require(root + "/src/utilities/read-file");
+const writeFile = require(root + "/src/utilities/write-file");
 const bumpVersion = require(root + "/src/utilities/bump-version");
 
 module.exports = function(bumpSpec, fileName, findVersion) {
@@ -13,6 +11,6 @@ module.exports = function(bumpSpec, fileName, findVersion) {
     const bumpedVersion = bumpVersion(version, bumpSpec);
     const leftContent = fileContent.substring(0, versionLocator.startIndex);
     const rightContent = fileContent.substring(versionLocator.endIndex, fileContent.length);
-    return writeFile(fileName, leftContent + bumpedVersion + rightContent, "utf-8");
+    return writeFile(fileName, leftContent + bumpedVersion + rightContent);
   });
 };
