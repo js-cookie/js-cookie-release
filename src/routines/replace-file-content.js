@@ -1,4 +1,6 @@
-const readFile = require("bluebird").promisify(require("fs").readFile);
+const root = require("app-root-path");
+
+const readFile = require(root + "/src/utilities/read-file");
 const writeFile = require("bluebird").promisify(require("fs").writeFile);
 
 module.exports = function(fileName, replace) {

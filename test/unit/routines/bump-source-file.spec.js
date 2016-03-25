@@ -1,7 +1,7 @@
 const root = require("app-root-path");
-const readFile = require("bluebird").promisify(require("fs").readFile);
 const expect = require("expect.js");
 
+const readFile = require(root + "/src/utilities/read-file");
 const bumpSourceFile = require(root + "/src/routines/bump-source-file");
 const createFileFixtureSync = require(root + "/test/create-file-fixture-sync");
 

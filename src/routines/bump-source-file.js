@@ -1,9 +1,9 @@
 const root = require("app-root-path");
 const promisify = require("bluebird").promisify;
 
-const readFile = promisify(require("fs").readFile);
 const writeFile = promisify(require("fs").writeFile);
 
+const readFile = require(root + "/src/utilities/read-file");
 const bumpVersion = require(root + "/src/utilities/bump-version");
 
 module.exports = function(bumpSpec, fileName, findVersion) {
