@@ -16,11 +16,13 @@
     "eslint": "2.4.0",
     "expect.js": "0.3.1",
     "mocha": "2.4.5",
+    "rimraf": "2.5.2",
     "str-replace": "0.0.2"
   },
   "dependencies": {
     "app-root-path": "1.0.0",
     "bluebird": "3.3.4",
-    "json-update": "1.2.0"
+    "json-update": "1.2.0",
+    "nodegit": "0.11.9"
   }
 }
