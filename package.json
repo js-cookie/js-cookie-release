@@ -1,10 +1,10 @@
 {
-  "name": "js-cookie-build",
+  "name": "js-cookie-release",
   "version": "0.0.0",
-  "description": "Build routines for JavaScript Cookie library",
+  "description": "Release routines for JavaScript Cookie library",
   "keywords": [
     "js-cookie",
-    "build",
+    "release",
     "node"
   ],
   "author": "Fagner Brack",
