@@ -1,3 +1,10 @@
-module.exports = function(listener) {
-  return listener.address().address + ":" + listener.address().port;
+module.exports = function(serverListener) {
+  return {
+    toUrlAuthority: function() {
+      return serverListener.address().address + ":" + serverListener.address().port;
+    },
+    toGitHttpUrl: function() {
+      return "http://" + this.toUrlAuthority() + "/.git";
+    }
+  };
 };

@@ -21,13 +21,13 @@ module.exports = function() {
     return createGitServer();
   }).then(function(createdServer) {
     server = createdServer;
-    const serverUrl = formatServerListener(server.listener);
+    const serverUrl = formatServerListener(server.listener).toUrlAuthority();
     return createOriginRemoteFor(repo.repository, serverUrl);
   }).then(function() {
     return Git.Remote.list(repo.repository).then(function(remoteNames) {
       return {
         remotes: remoteNames.map(remoteNameToRemoteEntity),
-        gitHttpUrl: "http://" + formatServerListener(server.listener) + "/.git",
+        gitHttpUrl: formatServerListener(server.listener).toGitHttpUrl(),
         destroy: function() {
           repo.remove();
           server.close();
