@@ -26,5 +26,8 @@
     "bluebird": "3.4.6",
     "json-update": "3.0.0",
     "nodegit": "0.16.0"
+  },
+  "engines": {
+    "node": "6.x.x"
   }
 }
