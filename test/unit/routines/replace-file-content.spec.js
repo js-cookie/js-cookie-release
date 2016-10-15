@@ -1,6 +1,6 @@
 const root = require("app-root-path");
 const replace = require("str-replace");
-const expect = require("expect.js");
+const expect = require("chai").expect;
 
 const readFile = require(root + "/src/file/read-file");
 const replaceFileContent = require(root + "/src/routines/replace-file-content");
@@ -17,7 +17,7 @@ describe("replace-file-content", function() {
     return replaceFileContent(targetFileName, replacementOperation).then(function() {
       return readFile(targetFileName);
     }).then(function(fileContent) {
-      expect(fileContent).to.be("Some box content");
+      expect(fileContent).to.equal("Some box content");
     }).finally(function() {
       removeFileFixtureSync();
     });

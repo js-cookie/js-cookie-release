@@ -1,5 +1,5 @@
 const root = require("app-root-path");
-const expect = require("expect.js");
+const expect = require("chai").expect;
 
 const readFile = require(root + "/src/file/read-file");
 const bumpSourceFile = require(root + "/src/routines/bump-source-file");
@@ -23,7 +23,7 @@ describe("bump-source-file", function() {
     return bumpSourceFile("minor", targetFilename, findVersion).then(function() {
       return readFile(targetFilename);
     }).then(function(changedFileContents) {
-      expect(changedFileContents).to.be("/* JS Cookie v0.1.0 */");
+      expect(changedFileContents).to.equal("/* JS Cookie v0.1.0 */");
     }).finally(function() {
       removeFileFixtureSync();
     });

@@ -1,5 +1,5 @@
 const root = require("app-root-path");
-const expect = require("expect.js");
+const expect = require("chai").expect;
 
 const createGitRepoFixture = require(root + "/test/fixture/create-git-repo-fixture");
 const gitCommit = require(root + "/src/routines/git-commit");
@@ -15,8 +15,8 @@ describe("git-commit", function() {
         expect(objectId).to.be.a("string");
         return repoFixture.repository.getHeadCommit();
       }).then(function(headCommit) {
-        expect(headCommit).not.to.be(null);
-        expect(headCommit.message()).to.be("Release version 0.0.1");
+        expect(headCommit).not.to.equal(null);
+        expect(headCommit.message()).to.equal("Release version 0.0.1");
       });
     }).finally(function() {
       removeGitRepoFixture();

@@ -1,5 +1,5 @@
 const root = require("app-root-path");
-const expect = require("expect.js");
+const expect = require("chai").expect;
 const Promise = require("bluebird");
 const loadJSON = Promise.promisify(require("json-update").load);
 
