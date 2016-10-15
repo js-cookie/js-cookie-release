@@ -3,7 +3,7 @@ const root = require("app-root-path");
 const http = require("http");
 const Promise = require("bluebird");
 
-const resolveGitDirectoryFixture = require(root + "/test/fixture/resolve-git-directory-fixture");
+const resolveGitDirectoryFixture = require(root + "/test/dummy-data/resolve-git-test-directory");
 
 let nextPort = 50000;
 

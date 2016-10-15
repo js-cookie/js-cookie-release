@@ -1,7 +1,7 @@
 const root = require("app-root-path");
 const expect = require("chai").expect;
 
-const createGitRepoFixture = require(root + "/test/fixture/create-git-repo-fixture");
+const createGitRepoFixture = require(root + "/test/dummy-data/create-git-test-repo");
 const gitCommit = require(root + "/src/routines/git-commit");
 
 describe("git-commit", function() {

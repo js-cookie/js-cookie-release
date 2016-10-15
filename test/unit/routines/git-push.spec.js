@@ -1,6 +1,6 @@
 const root = require("app-root-path");
 
-const startGitRepoWithServer = require(root + "/test/fixture/start-git-repo-with-server");
+const startGitRepoWithServer = require(root + "/test/dummy-data/start-git-repo-with-server");
 const gitPush = require(root + "/src/routines/git-push");
 const gitCommit = require(root + "/src/routines/git-commit");
 

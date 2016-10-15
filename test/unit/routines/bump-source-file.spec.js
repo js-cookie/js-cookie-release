@@ -3,7 +3,7 @@ const expect = require("chai").expect;
 
 const readFile = require(root + "/src/file/read-file");
 const bumpSourceFile = require(root + "/src/routines/bump-source-file");
-const createFileFixtureSync = require(root + "/test/fixture/create-file-fixture-sync");
+const createFileFixtureSync = require(root + "/test/dummy-data/create-file-sync");
 
 describe("bump-source-file", function() {
 

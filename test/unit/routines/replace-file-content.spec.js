@@ -4,7 +4,7 @@ const expect = require("chai").expect;
 
 const readFile = require(root + "/src/file/read-file");
 const replaceFileContent = require(root + "/src/routines/replace-file-content");
-const createFileFixtureSync = require(root + "/test/fixture/create-file-fixture-sync");
+const createFileFixtureSync = require(root + "/test/dummy-data/create-file-sync");
 
 describe("replace-file-content", function() {
 
