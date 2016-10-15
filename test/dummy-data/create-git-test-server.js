@@ -3,13 +3,13 @@ const root = require("app-root-path");
 const http = require("http");
 const Promise = require("bluebird");
 
-const resolveGitDirectoryFixture = require(root + "/test/dummy-data/resolve-git-test-directory");
+const resolveGitDirectory = require(root + "/test/dummy-data/resolve-git-test-directory");
 
 let nextPort = 50000;
 
 module.exports = function() {
   return new Promise(function(resolve) {
-    const repos = pushover(resolveGitDirectoryFixture());
+    const repos = pushover(resolveGitDirectory());
     const server = http.createServer(function(req, res) {
       repos.handle(req, res);
     });

@@ -2,10 +2,10 @@ const Git = require("nodegit");
 const rimraf = require("rimraf");
 const root = require("app-root-path");
 
-const resolveGitDirectoryFixture = require(root + "/test/dummy-data/resolve-git-test-directory");
+const resolveGitDirectory = require(root + "/test/dummy-data/resolve-git-test-directory");
 
 module.exports = function() {
-  const repoDirectory = resolveGitDirectoryFixture();
+  const repoDirectory = resolveGitDirectory();
   const IS_BARE_FALSE = 0;
   return Git.Repository.init(repoDirectory, IS_BARE_FALSE).then(function(repository) {
     return {

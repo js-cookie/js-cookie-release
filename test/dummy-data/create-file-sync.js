@@ -5,7 +5,7 @@ const writeFile = require(root + "/src/file/write-file");
 
 module.exports = function(fileName, contents) {
   writeFile.sync(fileName, contents);
-  return function removeFileFixtureSync() {
+  return function removeFileSync() {
     deleteFile.sync(fileName);
   };
 };
