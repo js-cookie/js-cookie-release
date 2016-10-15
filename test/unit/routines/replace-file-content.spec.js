@@ -8,19 +8,27 @@ const createFileSync = require(root + "/test/dummy-data/create-file-sync");
 
 describe("replace-file-content", function() {
 
-  it("should replace something in a file", function() {
+  describe("Given a dummy file with any content", function() {
     const targetFileName = "test-file.txt";
-    const removeFileSync = createFileSync(targetFileName, "Some file content");
-    const replacementOperation = function(fileContent) {
-      return replace("file").from(fileContent).with("box");
-    };
-    return replaceFileContent(targetFileName, replacementOperation).then(function() {
-      return readFile(targetFileName);
-    }).then(function(fileContent) {
-      expect(fileContent).to.equal("Some box content");
-    }).finally(function() {
-      removeFileSync();
+    let removeDummyFile;
+
+    beforeEach(function() {
+      removeDummyFile = createFileSync(targetFileName, "Some file content");
+    });
+
+    afterEach(function() {
+      removeDummyFile();
+    });
+
+    it("should replace something in a file", function() {
+      const replacementOperation = function(fileContent) {
+        return replace("file").from(fileContent).with("box");
+      };
+      return replaceFileContent(targetFileName, replacementOperation).then(function() {
+        return readFile(targetFileName);
+      }).then(function(fileContent) {
+        expect(fileContent).to.equal("Some box content");
+      });
     });
   });
-
 });
