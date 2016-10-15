@@ -6,7 +6,6 @@ module.exports = function(message, repository) {
     getRepository = Promise.resolve(repository);
   }
   return getRepository.then(function(repository) {
-    console.log("repo: ", repository.path());
     const author = Git.Signature.default(repository);
     const committer = Git.Signature.default(repository);
     return repository.createCommitOnHead([], author, committer, message);
