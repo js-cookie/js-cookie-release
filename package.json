@@ -10,7 +10,8 @@
   "author": "Fagner Brack",
   "license": "MIT",
   "scripts": {
-    "test": "eslint src/**/*.js test/**/*.js && mocha"
+    "test": "eslint src/**/*.js test/**/*.js && mocha",
+    "test:watch": "eslint src/**/*.js test/**/*.js && mocha -w"
   },
   "devDependencies": {
     "eslint": "3.8.0",
