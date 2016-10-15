@@ -3,13 +3,13 @@ const expect = require("chai").expect;
 
 const readFile = require(root + "/src/file/read-file");
 const bumpSourceFile = require(root + "/src/routines/bump-source-file");
-const createFileFixtureSync = require(root + "/test/dummy-data/create-file-sync");
+const createFileSync = require(root + "/test/dummy-data/create-file-sync");
 
 describe("bump-source-file", function() {
 
   it("should bump the 'minor' version using Regular Expression", function() {
     const targetFilename = "bump-minor.js";
-    const removeFileFixtureSync = createFileFixtureSync(targetFilename, "/* JS Cookie v0.0.0 */");
+    const removeFileSync = createFileSync(targetFilename, "/* JS Cookie v0.0.0 */");
     const findVersion = function(fileContent) {
       const match = /Cookie v([0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2})/.exec(fileContent);
       const groupMatch = match[1];
@@ -25,7 +25,7 @@ describe("bump-source-file", function() {
     }).then(function(changedFileContents) {
       expect(changedFileContents).to.equal("/* JS Cookie v0.1.0 */");
     }).finally(function() {
-      removeFileFixtureSync();
+      removeFileSync();
     });
   });
 

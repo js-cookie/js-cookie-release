@@ -4,13 +4,13 @@ const expect = require("chai").expect;
 
 const readFile = require(root + "/src/file/read-file");
 const replaceFileContent = require(root + "/src/routines/replace-file-content");
-const createFileFixtureSync = require(root + "/test/dummy-data/create-file-sync");
+const createFileSync = require(root + "/test/dummy-data/create-file-sync");
 
 describe("replace-file-content", function() {
 
   it("should replace something in a file", function() {
     const targetFileName = "test-file.txt";
-    const removeFileFixtureSync = createFileFixtureSync(targetFileName, "Some file content");
+    const removeFileSync = createFileSync(targetFileName, "Some file content");
     const replacementOperation = function(fileContent) {
       return replace("file").from(fileContent).with("box");
     };
@@ -19,7 +19,7 @@ describe("replace-file-content", function() {
     }).then(function(fileContent) {
       expect(fileContent).to.equal("Some box content");
     }).finally(function() {
-      removeFileFixtureSync();
+      removeFileSync();
     });
   });
 
