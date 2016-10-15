@@ -1,7 +1,6 @@
 const Git = require("nodegit");
 
 module.exports = function(message, repository) {
-  "use strict";
   let getRepository = Git.Repository.open("./");
   if (repository) {
     getRepository = Promise.resolve(repository);

@@ -1,5 +1,3 @@
-"use strict";
-
 const pushover = require("pushover");
 const root = require("app-root-path");
 const http = require("http");

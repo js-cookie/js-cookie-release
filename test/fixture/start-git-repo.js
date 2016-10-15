@@ -1,5 +1,3 @@
-"use strict";
-
 const root = require("app-root-path");
 const Git = require("nodegit");
 

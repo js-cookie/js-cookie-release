@@ -5,7 +5,6 @@ const createGitRepoFixture = require(root + "/test/fixture/create-git-repo-fixtu
 const gitCommit = require(root + "/src/routines/git-commit");
 
 describe("git-commit", function() {
-  "use strict";
 
   it("should create a commit with the given message", function() {
     let removeGitRepoFixture = () => {};
