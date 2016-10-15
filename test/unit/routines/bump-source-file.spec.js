@@ -3,7 +3,7 @@ const expect = require("expect.js");
 
 const readFile = require(root + "/src/file/read-file");
 const bumpSourceFile = require(root + "/src/routines/bump-source-file");
-const createFileFixtureSync = require(root + "/test/create-file-fixture-sync");
+const createFileFixtureSync = require(root + "/test/fixture/create-file-fixture-sync");
 
 describe("bump-source-file", function() {
 

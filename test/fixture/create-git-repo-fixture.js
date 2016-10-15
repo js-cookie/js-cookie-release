@@ -2,7 +2,7 @@ const Git = require("nodegit");
 const rimraf = require("rimraf");
 const root = require("app-root-path");
 
-const resolveGitDirectoryFixture = require(root + "/test/resolve-git-directory-fixture");
+const resolveGitDirectoryFixture = require(root + "/test/fixture/resolve-git-directory-fixture");
 
 module.exports = function() {
   const repoDirectory = resolveGitDirectoryFixture();

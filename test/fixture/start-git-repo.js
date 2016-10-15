@@ -3,9 +3,9 @@
 const root = require("app-root-path");
 const Git = require("nodegit");
 
-const formatServerListener = require(root + "/test/format-server-listener");
-const createGitRepoFixture = require(root + "/test/create-git-repo-fixture");
-const createGitServerFixture = require(root + "/test/create-git-server-fixture");
+const formatServerListener = require(root + "/test/fixture/format-server-listener");
+const createGitRepoFixture = require(root + "/test/fixture/create-git-repo-fixture");
+const createGitServerFixture = require(root + "/test/fixture/create-git-server-fixture");
 
 module.exports = function() {
   let removeGitRepoFixture = () => {};
