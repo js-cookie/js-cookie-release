@@ -2,7 +2,7 @@ const root = require("app-root-path");
 const replace = require("str-replace");
 const expect = require("expect.js");
 
-const readFile = require(root + "/src/utilities/read-file");
+const readFile = require(root + "/src/file/read-file");
 const replaceFileContent = require(root + "/src/routines/replace-file-content");
 const createFileFixtureSync = require(root + "/test/create-file-fixture-sync");
 
