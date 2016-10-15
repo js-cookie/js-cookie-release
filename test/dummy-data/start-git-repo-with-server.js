@@ -7,8 +7,7 @@ const createGitServerFixture = require(root + "/test/dummy-data/create-git-test-
 
 module.exports = function() {
   let repoFixture, serverFixture;
-  const createOriginRemoteFor = function(repository, serverListener) {
-    const serverUrl = formatServerListener(serverListener);
+  const createOriginRemoteFor = function(repository, serverUrl) {
     return Git.Remote.create(repository, "origin", serverUrl);
   };
   const remoteNameToRemoteEntity = function(remoteName) {
@@ -22,11 +21,13 @@ module.exports = function() {
     return createGitServerFixture();
   }).then(function(createdServerFixture) {
     serverFixture = createdServerFixture;
-    return createOriginRemoteFor(repoFixture.repository, serverFixture.listener);
+    const serverUrl = formatServerListener(serverFixture.listener);
+    return createOriginRemoteFor(repoFixture.repository, serverUrl);
   }).then(function() {
     return Git.Remote.list(repoFixture.repository).then(function(remoteNames) {
       return {
         remotes: remoteNames.map(remoteNameToRemoteEntity),
+        gitHttpUrl: "http://" + formatServerListener(serverFixture.listener) + "/.git",
         destroy: function() {
           repoFixture.remove();
           serverFixture.close();
