@@ -8,18 +8,26 @@ const createFileSync = require(root + "/test/dummy-data/create-file-sync");
 
 describe("bump-json-files", function() {
 
-  it("should bump the 'minor' version for a system JSON file", function() {
+  describe("Given a dummy file in JSON format", function() {
     const targetFilename = "bump-minor.json";
-    const removeFileSync = createFileSync(targetFilename, JSON.stringify({
-      version: "0.0.0"
-    }));
-    return bumpJSONFiles("minor", [targetFilename]).then(function() {
-      return loadJSON(targetFilename);
-    }).then(function(targetFile) {
-      expect(targetFile).to.have.property("version", "0.1.0");
-    }).finally(function() {
-      removeFileSync();
+    let removeDummyJSONFileSync;
+
+    beforeEach(function() {
+      removeDummyJSONFileSync = createFileSync(targetFilename, JSON.stringify({
+        version: "0.0.0"
+      }));
+    });
+
+    afterEach(function() {
+      removeDummyJSONFileSync();
+    });
+
+    it("should bump the 'minor' version attribute", function() {
+      return bumpJSONFiles("minor", [targetFilename]).then(function() {
+        return loadJSON(targetFilename);
+      }).then(function(targetFile) {
+        expect(targetFile).to.have.property("version", "0.1.0");
+      });
     });
   });
-
 });
