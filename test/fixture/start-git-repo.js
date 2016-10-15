@@ -26,11 +26,12 @@ module.exports = function() {
   }).then(function() {
     return Git.Remote.list(repoFixture.repository).then(function(remoteNames) {
       return {
-        remotes: remoteNames.map(remoteNameToRemoteEntity)
+        remotes: remoteNames.map(remoteNameToRemoteEntity),
+        destroy: function() {
+          repoFixture.remove();
+          serverFixture.close();
+        }
       };
     });
-  }).finally(function() {
-    repoFixture.remove();
-    serverFixture.close();
   });
 };
