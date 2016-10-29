@@ -1,5 +1,5 @@
 const root = require("app-root-path");
-const bumpVersion = require(root + "/src/utilities/bump-version");
+const bumpVersion = require(root + "/src/bump-version");
 const expect = require("chai").expect;
 
 describe("bump-version", function() {

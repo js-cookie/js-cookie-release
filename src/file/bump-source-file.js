@@ -2,7 +2,7 @@ const root = require("app-root-path");
 
 const readFile = require(root + "/src/file/read-file");
 const writeFile = require(root + "/src/file/write-file");
-const bumpVersion = require(root + "/src/utilities/bump-version");
+const bumpVersion = require(root + "/src/bump-version");
 
 module.exports = function(bumpSpec, fileName, findVersion) {
   return readFile(fileName).then(function(fileContent) {

@@ -3,7 +3,7 @@ const replace = require("str-replace");
 const expect = require("chai").expect;
 
 const readFile = require(root + "/src/file/read-file");
-const replaceFileContent = require(root + "/src/routines/replace-file-content");
+const replaceFileContent = require(root + "/src/file/replace-file-content");
 const createFileSync = require(root + "/test/dummy-data/create-file-sync");
 
 describe("replace-file-content", function() {

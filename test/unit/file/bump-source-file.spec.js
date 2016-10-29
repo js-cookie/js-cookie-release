@@ -2,7 +2,7 @@ const root = require("app-root-path");
 const expect = require("chai").expect;
 
 const readFile = require(root + "/src/file/read-file");
-const bumpSourceFile = require(root + "/src/routines/bump-source-file");
+const bumpSourceFile = require(root + "/src/file/bump-source-file");
 const createFileSync = require(root + "/test/dummy-data/create-file-sync");
 
 describe("bump-source-file", function() {

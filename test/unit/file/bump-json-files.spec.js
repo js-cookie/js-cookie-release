@@ -3,7 +3,7 @@ const expect = require("chai").expect;
 const Promise = require("bluebird");
 const loadJSON = Promise.promisify(require("json-update").load);
 
-const bumpJSONFiles = require(root + "/src/routines/bump-json-files");
+const bumpJSONFiles = require(root + "/src/file/bump-json-files");
 const createFileSync = require(root + "/test/dummy-data/create-file-sync");
 
 describe("bump-json-files", function() {

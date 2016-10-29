@@ -2,7 +2,7 @@ const root = require("app-root-path");
 const expect = require("chai").expect;
 
 const createGitRepo = require(root + "/test/dummy-data/create-git-test-repo");
-const gitCommit = require(root + "/src/routines/git-commit");
+const gitCommit = require(root + "/src/git/git-commit");
 
 describe("git-commit", function() {
 

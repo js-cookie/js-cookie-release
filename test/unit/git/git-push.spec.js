@@ -2,8 +2,8 @@ const root = require("app-root-path");
 const expect = require("chai").expect;
 
 const startGitRepoWithServer = require(root + "/test/dummy-data/start-git-repo-with-server");
-const gitPush = require(root + "/src/routines/git-push");
-const gitCommit = require(root + "/src/routines/git-commit");
+const gitPush = require(root + "/src/git/git-push");
+const gitCommit = require(root + "/src/git/git-commit");
 const cloneToLocalDir = require(root + "/test/dummy-data/clone-repo-to-local-dir");
 
 describe("git-push", function() {
