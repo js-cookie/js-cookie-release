@@ -26,7 +26,7 @@ describe("git-commit", function() {
         return testRepo.repository.getHeadCommit();
       }).then(function(headCommit) {
         expect(headCommit).not.to.equal(null);
-        expect(headCommit.message()).to.equal("Release version 0.0.1");
+        expect(headCommit.message()).to.equal(commitMessage);
       });
     });
   });
