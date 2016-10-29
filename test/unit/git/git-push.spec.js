@@ -10,7 +10,7 @@ describe("git-push", function() {
   let defaultTestRepository;
   let clonedTestRepository;
 
-  describe('Given a dummy server with git enabled cloned to local dir', function() {
+  describe("Given a dummy server with git enabled cloned to local dir", function() {
 
     beforeEach(function() {
       return startGitRepoWithServer().then(function(defaultTestRepositoryResult) {
