@@ -11,7 +11,9 @@
   "license": "MIT",
   "scripts": {
     "test": "eslint \"src/**/*.js\" \"test/**/*.js\" && mocha --trace-warnings",
-    "test:watch": "eslint \"src/**/*.js\" \"test/**/*.js\" && mocha -w"
+    "test:watch": "eslint \"src/**/*.js\" \"test/**/*.js\" && mocha -w",
+    "release:test": "node release.js fake patch",
+    "release": "node release.js fake patch"
   },
   "devDependencies": {
     "chai": "4.1.2",
