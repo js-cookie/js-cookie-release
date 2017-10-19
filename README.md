@@ -1,3 +1,7 @@
+# JS Cookie Release API
+
+Release routines for JavaScript Cookie library
+
 ## Functions
 
 #### `Promise bumpJSONFiles(String bumpSpec, Array filePaths)`
