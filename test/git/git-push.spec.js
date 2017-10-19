@@ -42,19 +42,20 @@ describe("Given a dummy server with git enabled cloned to local dir", function()
 
   describe("Git Push Tag To Remote", function() {
     it("should commit, create a tag and push successfully to the remote", function() {
+      const DUMMY_TAG_NAME = "dummy_tag_name";
       return gitCommit("Dummy commit", clonedTestRepository.repository).then(function(dummyCommitId) {
-        return gitTag("dummy_tag_name", dummyCommitId, clonedTestRepository.repository);
+        return gitTag(DUMMY_TAG_NAME, dummyCommitId, clonedTestRepository.repository);
       }).then(function() {
-        return gitPushTag("dummy_tag_name", defaultTestRepository.remotes[0].name, clonedTestRepository.repository);
+        return gitPushTag(DUMMY_TAG_NAME, defaultTestRepository.remotes[0].name, clonedTestRepository.repository);
       }).then(function deleteLocalTag() {
-        return require("nodegit").Tag.delete(clonedTestRepository.repository, "dummy_tag_name");
+        return require("nodegit").Tag.delete(clonedTestRepository.repository, DUMMY_TAG_NAME);
       }).then(function fetchRemoteTag() {
         return clonedTestRepository.repository.getRemote(defaultTestRepository.remotes[0].name).then(function(remote) {
-          return remote.fetch(["refs/tags/dummy_tag_name"]);
+          return remote.fetch([`refs/tags/${DUMMY_TAG_NAME}`]);
         });
       }).then(function() {
-        return clonedTestRepository.repository.getTagByName("dummy_tag_name").then(function(tag) {
-          expect(tag.name()).to.equal("dummy_tag_name");
+        return clonedTestRepository.repository.getTagByName(DUMMY_TAG_NAME).then(function(tag) {
+          expect(tag.name()).to.equal(DUMMY_TAG_NAME);
         });
       });
     });
