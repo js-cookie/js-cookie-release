@@ -17,7 +17,7 @@ if (process.argv.includes("major")) {
   targetBumpSpec = "major";
 }
 if (!targetBumpSpec) {
-  console.log("Invalid bump spec, use 'patch', 'minor' or 'major'");
+  console.log("Invalid bump spec, use \"patch\", \"minor\" or \"major\"");
   return;
 }
 
@@ -36,21 +36,21 @@ Promise.try(() => {
   console.log("Found repository on:", foundRepositoryPath);
   return Git.Repository.open(foundRepositoryPath);
 }).then((_localRepo) => {
-  localRepo = _localRepo
+  localRepo = _localRepo;
 }).then(() => {
   console.log("Creating release commit...");
   if (!isFakeRun) {
     return gitCommit("Release new version", localRepo);
   }
-  return 'fake44ef0665e9e8e5fdf7c6bfcd61f95fe8b699';
+  return "fake44ef0665e9e8e5fdf7c6bfcd61f95fe8b699";
 }).then((commitObjectId) => {
-  const tagName = commitObjectId && commitObjectId.substring(0, 8)
-  const tagReferenceCommit = commitObjectId
+  const tagName = commitObjectId && commitObjectId.substring(0, 8);
+  const tagReferenceCommit = commitObjectId;
   console.log("Creating tag:", tagName);
   if (!isFakeRun) {
     return gitTag(tagName, tagReferenceCommit, localRepo);
   }
-  return /* FakeTag */ { tag_name: 'fake_tag_name' };
+  return /* FakeTag */ { tag_name: "fake_tag_name" };
 }).then((tag) => {
   return localRepo.getRemotes().then((localRemotes) => {
     if (!isFakeRun) {
@@ -59,5 +59,4 @@ Promise.try(() => {
   });
 });
 
-// TODO eslint in this file
 // TODO Publish on NPM
