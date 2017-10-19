@@ -8,11 +8,11 @@ const bumpVersion = require(root + "/src/bump-version");
 module.exports = function(bumpSpec, fileNames) {
   const promisesToBumpFiles = fileNames.map(function(fileName) {
     return loadJSON(fileName)
-    .then(function(fileContent) {
-      return updateJSON(fileName, {
-        version: bumpVersion(fileContent.version, bumpSpec)
+      .then(function(fileContent) {
+        return updateJSON(fileName, {
+          version: bumpVersion(fileContent.version, bumpSpec)
+        });
       });
-    });
   });
   return Promise.join(promisesToBumpFiles);
 };

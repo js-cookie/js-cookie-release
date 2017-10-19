@@ -7,7 +7,7 @@ const writeOperation = function(fileName, fileContent) {
 };
 
 writeOperation.sync = function(fileName, fileContent) {
-  fs.writeFile(fileName, fileContent);
+  fs.writeFileSync(fileName, fileContent);
 };
 
 module.exports = writeOperation;
