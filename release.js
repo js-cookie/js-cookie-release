@@ -58,5 +58,3 @@ Promise.try(() => {
     }
   });
 });
-
-// TODO Publish on NPM

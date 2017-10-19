@@ -13,3 +13,4 @@ Returns a `Promise` that will resolve once the commit has been created.
 ## Release Steps
 
 * Run `npm run release <bumpSpec>`, where `bumpSpec` is either `patch`, `minor` or `major`
+* Run `npm publish ./`
