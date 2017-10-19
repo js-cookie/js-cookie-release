@@ -34,9 +34,10 @@ Promise.try(() => {
   localRepo = _localRepo
   console.log("Found repository:", localRepo);
   console.log("Creating release commit...");
-  if (!isFakeRun) {
-    return gitCommit("Release new version", localRepo);
+  if (isFakeRun) {
+    return 'fake44ef0665e9e8e5fdf7c6bfcd61f95fe8b699';
   }
+  return gitCommit("Release new version", localRepo);
 }).then((commitObjectId) => {
   const tagName = commitObjectId && commitObjectId.substring(0, 8)
   const tagReferenceCommit = commitObjectId
