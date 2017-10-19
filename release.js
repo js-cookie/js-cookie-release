@@ -50,8 +50,9 @@ Promise.try(() => {
   if (!isFakeRun) {
     return gitTag(tagName, tagReferenceCommit, localRepo);
   }
-  return /* FakeTag */ { tag_name: "fake_tag_name" };
+  return /* FakeTag */ { name: () => "fake_tag_name"  };
 }).then((tag) => {
+  console.log("Created tag '" + tag.name() + "'");
   return localRepo.getRemotes().then((localRemotes) => {
     if (!isFakeRun) {
       return gitPushTag(tag.name(), localRemotes[0], localRepo);
