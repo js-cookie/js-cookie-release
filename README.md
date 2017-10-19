@@ -1,4 +1,4 @@
-## Operations
+## Functions
 
 #### `Promise bumpJSONFiles(String bumpSpec, Array filePaths)`
 
