@@ -3,6 +3,8 @@ const Git = require("nodegit");
 
 const bumpJSONFiles = require("./src/file/bump-json-files");
 const gitCommit = require("./src/git/git-commit");
+const gitTag = require("./src/git/git-tag");
+const gitPushTag = require("./src/git/git-push-tag");
 
 let targetBumpSpec;
 if (process.argv.includes("patch")) {
@@ -30,14 +32,17 @@ Promise.try(() => {
   }
 }).then(() => {
   return Git.Repository.discover(".", 0, ".");
+}).then((foundRepositoryPath) => {
+  console.log("Found repository on:", foundRepositoryPath);
+  return Git.Repository.open(foundRepositoryPath);
 }).then((_localRepo) => {
   localRepo = _localRepo
-  console.log("Found repository:", localRepo);
+}).then(() => {
   console.log("Creating release commit...");
-  if (isFakeRun) {
-    return 'fake44ef0665e9e8e5fdf7c6bfcd61f95fe8b699';
+  if (!isFakeRun) {
+    return gitCommit("Release new version", localRepo);
   }
-  return gitCommit("Release new version", localRepo);
+  return 'fake44ef0665e9e8e5fdf7c6bfcd61f95fe8b699';
 }).then((commitObjectId) => {
   const tagName = commitObjectId && commitObjectId.substring(0, 8)
   const tagReferenceCommit = commitObjectId
@@ -45,7 +50,14 @@ Promise.try(() => {
   if (!isFakeRun) {
     return gitTag(tagName, tagReferenceCommit, localRepo);
   }
+  return /* FakeTag */ { tag_name: 'fake_tag_name' };
+}).then((tag) => {
+  return localRepo.getRemotes().then((localRemotes) => {
+    if (!isFakeRun) {
+      return gitPushTag(tag.name(), localRemotes[0], localRepo);
+    }
+  });
 });
 
-// TODO Push the tag to the remote
+// TODO eslint in this file
 // TODO Publish on NPM
