@@ -1,33 +1,32 @@
-const root = require("app-root-path");
 const expect = require("chai").expect;
-const Promise = require("bluebird");
-const loadJSON = Promise.promisify(require("json-update").load);
+const readFile = require("util").promisify(require("fs").readFile);
+const writeFile = require("util").promisify(require("fs").writeFile);
+const unlink = require("util").promisify(require("fs").unlink);
 
-const bumpJSONFiles = require(root + "/src/file/bump-json-files");
-const createFileSync = require(root + "/test/dummy-data/create-file-sync");
+const bumpPackageJSON = require(require("app-root-path") + "/src/file/bump-package-json");
 
-describe("bump-json-files", function() {
+describe("Bump Package JSON", () => {
 
-  describe("Given a dummy file in JSON format", function() {
-    const targetFilename = "bump-minor.json";
-    let removeDummyJSONFileSync;
+  it("bumps the patch version in the package.json", async () => {
+    await writeFile("target-package.json", "{\"version\":\"0.0.0\"}");
+    await bumpPackageJSON("patch", "target-package.json");
+    const targetFileContent = await readFile("target-package.json", "UTF-8");
+    expect(targetFileContent).to.equal("{\"version\":\"0.0.1\"}");
+    await unlink("target-package.json");
 
-    beforeEach(function() {
-      removeDummyJSONFileSync = createFileSync(targetFilename, JSON.stringify({
-        version: "0.0.0"
-      }));
-    });
-
-    afterEach(function() {
-      removeDummyJSONFileSync();
-    });
-
-    it("should bump the 'minor' version attribute", function() {
-      return bumpJSONFiles("minor", [targetFilename]).then(function() {
-        return loadJSON(targetFilename);
-      }).then(function(targetFile) {
-        expect(targetFile).to.have.property("version", "0.1.0");
-      });
-    });
+    await writeFile("another-target-package.json", "{\"version\":\"0.0.0\"}");
+    await bumpPackageJSON("patch", "another-target-package.json");
+    const anotherTargetFileContent = await readFile("another-target-package.json", "UTF-8");
+    expect(anotherTargetFileContent).to.equal("{\"version\":\"0.0.1\"}");
+    await unlink("another-target-package.json");
   });
+
+  it("keeps existing properties intact", async () => {
+    await writeFile("target-package.json", "{\"existing\":1,\"version\":\"0.0.0\"}");
+    await bumpPackageJSON("patch", "target-package.json");
+    const bumpedFile = await readFile("target-package.json", "UTF-8");
+    expect(bumpedFile).to.equal("{\"existing\":1,\"version\":\"0.0.1\"}");
+    await unlink("target-package.json");
+  });
+
 });

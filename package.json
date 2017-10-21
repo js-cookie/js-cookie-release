@@ -10,8 +10,9 @@
   "author": "Fagner Brack",
   "license": "MIT",
   "scripts": {
-    "test": "eslint *.js \"src/**/*.js\" \"test/**/*.js\" && mocha --trace-warnings",
-    "test:watch": "eslint \"src/**/*.js\" \"test/**/*.js\" && mocha -w",
+    "lint": "eslint *.js \"src/**/*.js\" \"test/**/*.js\"",
+    "test": "mocha --trace-warnings",
+    "test:watch": "mocha -w",
     "release:test": "node release.js fake patch",
     "release": "node release.js patch"
   },
@@ -27,7 +28,6 @@
   "dependencies": {
     "app-root-path": "2.0.1",
     "bluebird": "3.5.1",
-    "json-update": "3.0.0",
     "nodegit": "0.20.2"
   },
   "engines": {

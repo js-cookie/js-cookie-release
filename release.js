@@ -1,7 +1,7 @@
 const Promise = require("bluebird");
 const Git = require("nodegit");
 
-const bumpJSONFiles = require("./src/file/bump-json-files");
+const bumpPackageJSON = require("./src/file/bump-package-json");
 const gitCommit = require("./src/git/git-commit");
 const gitTag = require("./src/git/git-tag");
 const gitPushTag = require("./src/git/git-push-tag");
@@ -28,7 +28,7 @@ let localRepo;
 Promise.try(() => {
   console.log("Bumping package.json...");
   if (!isFakeRun) {
-    return bumpJSONFiles(targetBumpSpec, ["package.json"]);
+    return bumpPackageJSON(targetBumpSpec, "package.json");
   }
 }).then(() => {
   return Git.Repository.discover(".", 0, ".");
