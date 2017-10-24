@@ -4,15 +4,13 @@ Release routines for JavaScript Cookie library
 
 ## Functions
 
-#### `Promise bumpJSONFiles(String bumpSpec, Array filePaths)`
+#### `Promise bumpPackageJSON(String bumpSpec, String filePath)`
 
-Bumps the "version" property from a list of file paths that matches the [JSON](http://json.org/) spec.  
-Returns a `Promise` that will resolve once all files have been bumped.
+Bumps the "version" property from a list of file paths that matches the [JSON](http://json.org/) spec.
 
 #### `Promise gitCommit(String message, NodeGitRepository gitRepository)`
 
-Adds all the changes to the staging area and create a commit to the given repository.  
-Returns a `Promise` that will resolve once the commit has been created.
+Add all the changes to the staging area and create a commit to the given repository.
 
 ## Release Steps
 

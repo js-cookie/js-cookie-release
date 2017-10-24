@@ -60,4 +60,5 @@ Promise.try(() => {
   });
 });
 
+// TODO Don't leak NodeGitRepository to gitCommit
 // TODO Allow the input of password?
