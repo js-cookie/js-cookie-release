@@ -29,4 +29,20 @@ describe("Bump Package JSON", () => {
     await unlink("target-package.json");
   });
 
+  it("keeps existing spacing intact", async () => {
+    await writeFile("target-package.json", "{ \"version\": \"0.0.0\" }");
+    await bumpPackageJSON("patch", "target-package.json");
+    const bumpedFile = await readFile("target-package.json", "UTF-8");
+    expect(bumpedFile).to.equal("{ \"version\": \"0.0.1\" }");
+    await unlink("target-package.json");
+  });
+
+  it("keep existing multiple spacing intact", async () => {
+    await writeFile("target-package.json", "{ \"version\":  \"0.0.0\" }");
+    await bumpPackageJSON("patch", "target-package.json");
+    const bumpedFile = await readFile("target-package.json", "UTF-8");
+    expect(bumpedFile).to.equal("{ \"version\":  \"0.0.1\" }");
+    await unlink("target-package.json");
+  });
+
 });

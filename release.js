@@ -61,4 +61,3 @@ Promise.try(() => {
 });
 
 // TODO Allow the input of password?
-// TODO Keep identation for package.json
